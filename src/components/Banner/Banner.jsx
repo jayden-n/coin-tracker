@@ -34,7 +34,7 @@ const Banner = () => {
               fontFamily: 'Montserrat',
             }}
           >
-            Crypto Radar
+          Cryptopia
           </Typography>
           <Typography
             variant="subtitle2"

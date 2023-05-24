@@ -45,7 +45,7 @@ const Header = () => {
               className={classes.title}
               variant="h6"
             >
-              Crypto Radar
+              Cryptopia
             </Typography>
             <Select
               variant="outlined"
