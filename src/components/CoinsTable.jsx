@@ -18,9 +18,8 @@ import {
 } from '@material-ui/core';
 import axios from 'axios';
 import { CoinList } from '../config/api';
-
-import { CryptoState } from '../CryptoContext';
 import { useNavigate } from 'react-router-dom';
+import { CryptoState } from '../CryptoContext';
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -65,8 +64,6 @@ export default function CoinsTable() {
   const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
-    console.log(data);
-
     setCoins(data);
     setLoading(false);
   };
@@ -75,6 +72,10 @@ export default function CoinsTable() {
     fetchCoins();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   const handleSearch = () => {
     return coins.filter(
@@ -102,6 +103,8 @@ export default function CoinsTable() {
         <TableContainer component={Paper}>
           {loading ? (
             <LinearProgress style={{ backgroundColor: 'gold' }} />
+          ) : handleSearch()?.length === 0 ? (
+            <h1>Seems Nothing Found :(</h1>
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: '#EEBC1D' }}>
@@ -114,7 +117,7 @@ export default function CoinsTable() {
                         fontFamily: 'Montserrat',
                       }}
                       key={head}
-                      align={head === 'Coin' ? '' : 'right'}
+                      align={head === 'Coin' ? 'inherit' : 'right'}
                     >
                       {head}
                     </TableCell>
@@ -193,20 +196,26 @@ export default function CoinsTable() {
         </TableContainer>
 
         {/* Comes from @material-ui/lab */}
-        <Pagination
-          count={(handleSearch()?.length / 10).toFixed(0)}
-          style={{
-            padding: 20,
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-          classes={{ ul: classes.pagination }}
-          onChange={(_, value) => {
-            setPage(value);
-            window.scroll(0, 450);
-          }}
-        />
+        {handleSearch()?.length !== 0 ? (
+          <Pagination
+            count={
+              parseInt((handleSearch()?.length / 10).toFixed(0)) === 0
+                ? 1
+                : parseInt((handleSearch()?.length / 10).toFixed(0))
+            }
+            style={{
+              padding: 20,
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+            classes={{ ul: classes.pagination }}
+            onChange={(_, value) => {
+              setPage(value);
+              window.scroll(0, 450);
+            }}
+          />
+        ) : null}
       </Container>
     </ThemeProvider>
   );
