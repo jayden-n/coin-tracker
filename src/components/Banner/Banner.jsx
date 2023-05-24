@@ -34,7 +34,7 @@ const Banner = () => {
               fontFamily: 'Montserrat',
             }}
           >
-          Cryptopia
+          Coin Tracker
           </Typography>
           <Typography
             variant="subtitle2"
