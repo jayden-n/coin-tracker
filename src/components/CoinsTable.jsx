@@ -6,6 +6,7 @@ import {
   Container,
   LinearProgress,
   Table,
+  TableBody,
   TableCell,
   TableContainer,
   TableHead,
@@ -43,6 +44,14 @@ const CoinsTable = () => {
       type: 'dark',
     },
   });
+
+  const handleSearch = () => {
+    return coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(search) ||
+        coin.symbol.toLowerCase().includes(search)
+    );
+  };
   return (
     <ThemeProvider theme={darkTheme}>
       <Container style={{ textAlign: 'center' }}>
@@ -83,6 +92,7 @@ const CoinsTable = () => {
                   ))}
                 </TableRow>
               </TableHead>
+              <TableBody></TableBody>
             </Table>
           )}
         </TableContainer>
