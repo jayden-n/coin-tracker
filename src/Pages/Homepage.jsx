@@ -1,9 +1,11 @@
-import React from 'react'
-
+import React, { Fragment } from 'react';
+import Banner from '../components/Banner/Banner';
 const Homepage = () => {
   return (
-    <div>Homepage</div>
-  )
-}
+    <Fragment>
+      <Banner />
+    </Fragment>
+  );
+};
 
-export default Homepage
+export default Homepage;
