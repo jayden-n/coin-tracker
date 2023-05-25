@@ -1,16 +1,15 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button'; // Added import
-import { AppBar, Box, Tab } from '@material-ui/core';
-import Login from './Login';
+import { Button, Tab, Tabs, AppBar, Box } from '@material-ui/core';
 import Signup from './Signup';
+import Login from './Login';
+import { useState } from 'react';
+import { CryptoState } from '../../CryptoContext';
+import { auth } from '../../firebase';
 import GoogleButton from 'react-google-button';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../firebase';
-import { CryptoState } from '../../CryptoContext';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -19,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
     width: 400,
+    backgroundColor: theme.palette.background.paper,
     color: 'white',
     borderRadius: 10,
   },
@@ -37,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AuthModal() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const { setAlert } = CryptoState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -47,13 +48,11 @@ export default function AuthModal() {
     setOpen(false);
   };
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const { setAlert } = CryptoState();
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -77,6 +76,7 @@ export default function AuthModal() {
         return;
       });
   };
+
   return (
     <div>
       <Button
@@ -84,6 +84,7 @@ export default function AuthModal() {
         style={{
           width: 85,
           height: 40,
+          marginLeft: 15,
           backgroundColor: '#EEBC1D',
         }}
         onClick={handleOpen}
@@ -111,7 +112,7 @@ export default function AuthModal() {
                 color: 'white',
               }}
             >
-              <Tab
+              <Tabs
                 value={value}
                 onChange={handleChange}
                 variant="fullWidth"
@@ -119,18 +120,14 @@ export default function AuthModal() {
               >
                 <Tab label="Login" />
                 <Tab label="Sign Up" />
-              </Tab>
+              </Tabs>
             </AppBar>
-
             {value === 0 && <Login handleClose={handleClose} />}
             {value === 1 && <Signup handleClose={handleClose} />}
             <Box className={classes.google}>
               <span>OR</span>
               <GoogleButton
-                style={{
-                  width: '100%',
-                  outline: 'none',
-                }}
+                style={{ width: '100%', outline: 'none' }}
                 onClick={signInWithGoogle}
               />
             </Box>

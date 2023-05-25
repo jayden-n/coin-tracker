@@ -1,14 +1,11 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
+import Drawer from '@material-ui/core/Drawer';
+import { Avatar, Button } from '@material-ui/core';
 import { CryptoState } from '../../CryptoContext';
-import { Avatar } from '@material-ui/core';
 import { signOut } from 'firebase/auth';
 import { auth, db } from '../../firebase';
 import { numberWithCommas } from '../CoinsTable';
-
 import { AiFillDelete } from 'react-icons/ai';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -29,18 +26,18 @@ const useStyles = makeStyles({
     gap: '20px',
     height: '92%',
   },
+  logout: {
+    height: '8%',
+    width: '100%',
+    backgroundColor: '#EEBC1D',
+    marginTop: 20,
+  },
   picture: {
     width: 200,
     height: 200,
     cursor: 'pointer',
     backgroundColor: '#EEBC1D',
     objectFit: 'contain',
-  },
-  logOut: {
-    height: '8%',
-    width: '100%',
-    backgroundColor: '#EEBC1D',
-    marginTop: 20,
   },
   watchlist: {
     flex: 1,
@@ -68,16 +65,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function UserSideBar() {
+export default function UserSidebar() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
   });
   const { user, setAlert, watchlist, coins, symbol } = CryptoState();
 
+  console.log(watchlist, coins);
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
-      event &&
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
     ) {
@@ -85,6 +83,17 @@ export default function UserSideBar() {
     }
 
     setState({ ...state, [anchor]: open });
+  };
+
+  const logOut = () => {
+    signOut(auth);
+    setAlert({
+      open: true,
+      type: 'success',
+      message: 'Logout Successfull !',
+    });
+
+    toggleDrawer();
   };
 
   const removeFromWatchlist = async (coin) => {
@@ -110,15 +119,6 @@ export default function UserSideBar() {
     }
   };
 
-  const logOut = () => {
-    signOut(auth);
-    setAlert({
-      open: true,
-      type: 'success',
-      message: 'Logout Successful !',
-    });
-    toggleDrawer();
-  };
   return (
     <div>
       {['right'].map((anchor) => (
@@ -128,17 +128,17 @@ export default function UserSideBar() {
             style={{
               height: 38,
               width: 38,
+              marginLeft: 15,
               cursor: 'pointer',
               backgroundColor: '#EEBC1D',
             }}
             src={user.photoURL}
             alt={user.displayName || user.email}
           />
-          <SwipeableDrawer
+          <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
           >
             <div className={classes.container}>
               <div className={classes.profile}>
@@ -190,7 +190,7 @@ export default function UserSideBar() {
                 Log Out
               </Button>
             </div>
-          </SwipeableDrawer>
+          </Drawer>
         </React.Fragment>
       ))}
     </div>

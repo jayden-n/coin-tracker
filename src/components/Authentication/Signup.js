@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CryptoState } from '../../CryptoContext';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
@@ -10,6 +10,7 @@ const Signup = ({ handleClose }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const { setAlert } = CryptoState();
+
   const handleSubmit = async () => {
     if (password !== confirmPassword) {
       setAlert({
@@ -26,14 +27,13 @@ const Signup = ({ handleClose }) => {
         email,
         password
       );
-
       setAlert({
         open: true,
         message: `Sign Up Successful. Welcome ${result.user.email}`,
         type: 'success',
       });
+
       handleClose();
-      
     } catch (error) {
       setAlert({
         open: true,
@@ -43,6 +43,7 @@ const Signup = ({ handleClose }) => {
       return;
     }
   };
+
   return (
     <Box
       p={3}
@@ -62,22 +63,22 @@ const Signup = ({ handleClose }) => {
       />
       <TextField
         variant="outlined"
-        type="password"
         label="Enter Password"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         fullWidth
       />
       <TextField
         variant="outlined"
+        label="Confirm Password"
         type="password"
-        label="Enter Password"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         fullWidth
       />
       <Button
-        variant="outlined"
+        variant="contained"
         size="large"
         style={{ backgroundColor: '#EEBC1D' }}
         onClick={handleSubmit}
