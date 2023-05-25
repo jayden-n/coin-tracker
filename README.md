@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Coin Tracker 💰
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Coin Tracker is a crypto currency tracking website that allows users to create their account with user login authentication, which then helps them to add their favorite crypto coin to wishlist!
 
 ## Available Scripts
 
