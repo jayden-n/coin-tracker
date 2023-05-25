@@ -1,6 +1,6 @@
 # Coin Tracker 💰
 
-Coin Tracker is a crypto currency tracking website that allows users to create their account with login authentication and get them the latest crypto coin prices, which then helps to add/remove their favorite crypto coins to/from the wishlist!
+Coin Tracker is a crypto currency tracking application that allows users to create their account with login authentication and get them the latest crypto coin prices, which then helps to add/remove their favorite crypto coins to/from the wishlist!
 
 ## Available Scripts
 
