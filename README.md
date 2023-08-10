@@ -1,70 +1,27 @@
-# Coin Tracker 💰
+# Coin Tracker 
 
-Coin Tracker is a crypto currency tracking application that allows users to create their account with login authentication and get them the latest crypto coin prices, which then helps to add/remove their favorite crypto coins to/from the wishlist!
 
-## Available Scripts
+<img width="1728" alt="Screenshot 2023-08-10 at 6 34 01 PM" src="https://github.com/jayden-n/coin-tracker/assets/94060508/e92cc99b-1032-4c78-b964-5d53cb8049ae">
 
-In the project directory, you can run:
+Coin Tracker is a crypto currency tracking application that allows users to create their account with login authentication and get them the latest crypto coin prices, which then helps to their favorite crypto coins to/from the wishlist! 💸
 
-### `yarn start`
+## Technologies - Frameworks - Libraries
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This web app is created with:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React.js](https://reactjs.org) version 18.2.0
+- [React Router DOM](https://reactrouter.com/en/main) version 6.11.2
+- [React-Carousel](https://www.npmjs.com/package/react-alice-carousel) version 2.7.1
+- [chart.js](https://react-chartjs-2.js.org/) version 3.0.4
+- [axios](https://axios-http.com/docs/intro) version 1.4.0
+- [Google Firebase](https://firebase.google.com/) version 9.22.0
+- [Material-UI](https://mui.com/) for styling components!
 
-### `yarn test`
+## Contributing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Pull requests are welcomed and highly appreciated. Before making any major changes, please feel free to open an issue and initiate a discussion about your ideas. Your valuable input and collaboration are greatly valued.
 
-### `yarn build`
+## License
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This web app is available under [MIT](https://choosealicense.com/licenses/mit/).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
